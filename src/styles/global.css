@@ -7,7 +7,7 @@
  @plugin "@tailwindcss/typography";
 
  @utility editorial-prose {
-   @apply prose prose-neutral max-w-3xl;
+   @apply prose prose-neutral max-w-none;
 
    @apply prose-headings:font-serif;
    @apply prose-headings:font-normal;
@@ -32,7 +32,7 @@
    @apply prose-code:bg-black/5;
    @apply prose-code:px-1;
  }
-
+ 
  :root {
    --bg: #f7f4ee;
    --text: #111111;
@@ -69,4 +69,10 @@
  ::selection {
    background: #111111;
    color: #f7f4ee;
+ }
+ 
+ .editorial-prose ul,
+ .editorial-prose ol,
+ .editorial-prose blockquote {
+   max-width: 80ch;
  }

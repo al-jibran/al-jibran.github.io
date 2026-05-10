@@ -1,10 +1,4 @@
 ---
-import { getCollection } from "astro:content";
-
-const posts = await getCollection(
-  "blog",
-  ({ data }) => !data.draft
-);
 
 const formatCategory = (
   category: string
@@ -18,25 +12,12 @@ const formatCategory = (
     )
     .join(" ");
 
-const groupedPosts = posts.reduce(
-  (acc, post) => {
-    const category =
-      post.id.split("/")[0];
-
-    if (!acc[category]) {
-      acc[category] = [];
-    }
-
-    acc[category].push(post);
-
-    return acc;
-  },
-  {} as Record<string, typeof posts>
-);
+const { groupedPosts } =
+  Astro.props;
 ---
 
 <aside
-  class="hidden xl:block sticky top-[73px] h-[calc(100vh-73px)] w-[280px] shrink-0 overflow-y-auto border-r border-[var(--border)] px-8 py-8"
+  class="hidden xl:block sticky top-[81px] h-[calc(100vh-73px)] w-[280px] shrink-0 overflow-y-auto border-r border-[var(--border)] px-8 py-8"
 >
     <nav class="space-y-10">
       {

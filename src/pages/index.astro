@@ -2,12 +2,18 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Header from "../components/Header.astro";
 import Sidebar from "../components/Sidebar.astro";
+
+import { getGroupedPosts }
+from "../lib/blog";
+
+const groupedPosts =
+  await getGroupedPosts();
 ---
 
 <MainLayout title="Jibran Dev">
-    <Header />
+    <Header groupedPosts={groupedPosts}/> 
     <div class="flex min-h-screen">
-        <Sidebar />
+        <Sidebar groupedPosts={groupedPosts}/>
 
         <main class="flex-1">
             <section

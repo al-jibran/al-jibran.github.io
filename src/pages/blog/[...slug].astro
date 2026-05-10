@@ -4,9 +4,13 @@ import {
   render,
 } from "astro:content";
 
+import { getGroupedPosts }
+from "../../lib/blog";
+
 import MainLayout from "../../layouts/MainLayout.astro";
 import Header from "../../components/Header.astro";
 import Sidebar from "../../components/Sidebar.astro";
+
 
 export async function getStaticPaths() {
   const posts =
@@ -24,6 +28,9 @@ export async function getStaticPaths() {
   }));
 }
 
+const groupedPosts =
+  await getGroupedPosts();
+
 const { post } = Astro.props;
 
 const { Content } =
@@ -31,14 +38,14 @@ const { Content } =
 ---
 
 <MainLayout title={post.data.title}>
-  <Header />
+    <Header groupedPosts={groupedPosts}/>
 
   <div class="flex min-h-screen">
-    <Sidebar />
+      <Sidebar groupedPosts={groupedPosts}/>
 
     <main class="flex-1 px-10 py-12 lg:px-20">
         <article
-          class="editorial-prose"
+          class="editorial-prose max-w-full"
         >
         <div
           class="mb-10 border-b border-[var(--border)] pb-8"
