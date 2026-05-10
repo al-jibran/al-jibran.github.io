@@ -1,20 +1,83 @@
 ---
-import { type CollectionEntry, getCollection, render } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
+import {
+  getCollection,
+  render,
+} from "astro:content";
+
+import MainLayout from "../../layouts/MainLayout.astro";
+import Header from "../../components/Header.astro";
+import Sidebar from "../../components/Sidebar.astro";
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.id },
-		props: post,
-	}));
-}
-type Props = CollectionEntry<'blog'>;
+  const posts =
+    await getCollection("blog");
 
-const post = Astro.props;
-const { Content } = await render(post);
+  return posts.map((post) => ({
+    params: {
+      slug:
+        post.id.replace(
+          /\.mdx?$/,
+          ""
+        ),
+    },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+
+const { Content } =
+  await render(post);
 ---
 
-<BlogPost {...post.data}>
-	<Content />
-</BlogPost>
+<MainLayout title={post.data.title}>
+  <Header />
+
+  <div class="flex min-h-screen">
+    <Sidebar />
+
+    <main class="flex-1 px-10 py-12 lg:px-20">
+      <article
+        class="prose prose-lg max-w-4xl dark:prose-invert"
+      >
+        <div
+          class="mb-10 border-b border-[var(--border)] pb-8"
+        >
+          <p
+            class="text-xs uppercase tracking-[0.2em] text-[var(--muted)]"
+          >
+              {
+                post.id
+                  .split("/")[0]
+                  .split("-")
+                  .map(
+                    word =>
+                      word.charAt(0).toUpperCase() +
+                      word.slice(1)
+                  )
+                  .join(" ")
+              }
+          </p>
+
+          <h1 class="mt-4">
+            {post.data.title}
+          </h1>
+
+          <p
+            class="mt-3 text-lg text-[var(--muted)]"
+          >
+            {post.data.description}
+          </p>
+
+          <div
+            class="mt-6 text-sm text-[var(--muted)]"
+          >
+            {post.data.readingTime}
+          </div>
+        </div>
+
+        <Content />
+      </article>
+    </main>
+  </div>
+</MainLayout>
