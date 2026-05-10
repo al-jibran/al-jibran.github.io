@@ -1,49 +1,77 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/Header.astro";
+import Sidebar from "../components/Sidebar.astro";
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<MainLayout title="Jibran Dev">
+    <Header />
+    <div class="flex min-h-screen">
+        <Sidebar />
+
+        <main class="flex-1">
+            <section
+              class="border-b border-[var(--border)] px-10 py-10 lg:px-20"
+            >
+              <p
+                class="text-sm tracking-wider uppercase font-bold"
+              >
+                  Welcome
+              </p>
+
+              <div class="mt-6 max-w-5xl">
+                <h1
+                  class="max-w-4xl text-5xl leading-[1.05] tracking-tight lg:text-6xl"
+                >
+                    Hi, I'm Jibran
+                </h1>
+
+                <p
+                  class="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]"
+                >
+                  I write about backend systems,
+                  software architecture, scalable
+                  engineering and the mental models
+                  behind difficult technical problems.
+                </p>
+              </div>
+            </section>
+
+            <section class="px-10 py-14 lg:px-20">
+                <div class="mb-8 flex items-center justify-between">
+                    <h2 class="text-3xl">Featured Essays</h2>
+
+                    <span class="text-sm text-[var(--muted)]">
+                        Selected writing
+                    </span>
+                </div>
+
+                <div class="grid gap-6 xl:grid-cols-3">
+                    {
+                        [1, 2, 3].map(() => (
+                            <article class="group cursor-pointer border border-[var(--border)] p-8 transition hover:-translate-y-1">
+                                <p class="text-xs uppercase tracking-[0.25em] text-[var(--muted)]">
+                                    System Design
+                                </p>
+
+                                <h3 class="mt-5 text-3xl leading-tight transition group-hover:underline">
+                                    Designing an AI Customer Support System
+                                </h3>
+
+                                <p class="mt-5 leading-7 text-[var(--muted)]">
+                                    How queues, workers and asynchronous
+                                    workflows make scalable support systems
+                                    possible.
+                                </p>
+
+                                <div class="mt-5 border-t border-[var(--border)] pt-4 text-sm text-[var(--muted)]">
+                                    May 10, 2026 · 8 min read
+                                </div>
+                            </article>
+                        ))
+                    }
+                </div>
+            </section>
+        </main>
+    </div>
+</MainLayout>
