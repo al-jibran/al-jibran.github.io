@@ -32,7 +32,7 @@
    @apply prose-code:bg-black/5;
    @apply prose-code:px-1;
  }
- 
+
  :root {
    --bg: #f7f4ee;
    --text: #111111;
@@ -52,6 +52,10 @@
    font-family: var(--font-source-serif);
    text-rendering: optimizeLegibility;
  }
+ html,
+ body {
+   overflow-x: hidden;
+ }
 
  h1,
  h2,
@@ -70,9 +74,79 @@
    background: #111111;
    color: #f7f4ee;
  }
- 
+
  .editorial-prose ul,
  .editorial-prose ol,
  .editorial-prose blockquote {
    max-width: 80ch;
  }
+
+ .editorial-prose {
+   min-width: 0;
+   overflow-wrap: break-word;
+ }
+
+ .editorial-prose pre {
+   width: 100%;
+   max-width: 100%;
+   overflow-x: auto;
+
+   white-space: pre;
+   word-break: normal;
+   overflow-wrap: normal;
+
+   box-sizing: border-box;
+   display: block;
+
+   padding: 1rem;
+   margin-left: 0;
+   margin-right: 0;
+
+   -webkit-overflow-scrolling: touch;
+ }
+
+ .editorial-prose pre code {
+   display: block;
+   width: max-content;
+   min-width: 100%;
+ }
+
+ .editorial-prose code {
+   word-break: break-word;
+ }
+
+ .editorial-prose img {
+   max-width: 100%;
+   height: auto;
+ }
+
+ .editorial-prose blockquote {
+   max-width: 100%;
+   overflow-wrap: break-word;
+ }
+
+ .editorial-prose table {
+   display: block;
+   overflow-x: auto;
+   max-width: 100%;
+ }
+
+ .editorial-prose a {
+   overflow-wrap: anywhere;
+ }
+
+ @media (max-width: 700px) {
+   .editorial-prose h1 {
+     font-size: 2.5rem;
+   }
+
+   .editorial-prose h2 {
+     font-size: 1.8rem;
+   }
+
+   .editorial-prose p {
+     font-size: 1.05rem;
+     line-height: 1.9;
+   }
+ }
+
