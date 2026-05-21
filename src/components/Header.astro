@@ -48,15 +48,16 @@ const formatCategory = (category) =>
             </button>
         </div>
     </div>
+</header>
 
-    <!-- Mobile overlay -->
-    <div id="menu-overlay" class="fixed inset-0 z-40 hidden bg-black/30"></div>
+<!-- Mobile overlay -->
+<div id="menu-overlay" class="fixed inset-0 z-40 hidden bg-black/30"></div>
 
-    <!-- Mobile drawer -->
-    <aside
-        id="mobile-menu"
-        class="fixed top-0 left-0 z-50 h-screen w-[300px] -translate-x-full overflow-y-auto border-r border-[var(--border)] bg-[var(--bg)] p-8 transition-transform duration-300"
-    >
+<!-- Mobile drawer -->
+<aside
+    id="mobile-menu"
+    class="fixed top-0 left-0 z-50 h-screen w-[300px] -translate-x-full overflow-y-auto border-r border-[var(--border)] bg-[var(--bg)] p-8 transition-transform duration-300"
+>
         <div class="flex items-center justify-end">
             <button id="menu-close" class="cursor-pointer"> ✕ </button>
         </div>
@@ -64,10 +65,16 @@ const formatCategory = (category) =>
         <nav class="mt-10 space-y-10">
             {
                 Object.entries(groupedPosts).map(([category, posts]) => (
-                    <section>
-                        <h3 class="mb-4 border-b border-[var(--border)] pb-2 text-[11px] uppercase tracking-[0.25em] text-[var(--muted)]">
+                    <details open class="group">
+                        <summary class="flex cursor-pointer items-center justify-between mb-4 border-b border-[var(--border)] pb-2 text-[11px] uppercase tracking-[0.25em] text-[var(--muted)]">
                             {formatCategory(category)}
-                        </h3>
+                            <span class="text-xs text-[var(--muted)] group-open:hidden">
+                                [+]
+                            </span>
+                            <span class="text-xs text-[var(--muted)] group-open:inline-block hidden">
+                                [-]
+                            </span>
+                        </summary>
 
                         <ul class="space-y-3">
                             {posts.map((post) => (
@@ -84,12 +91,11 @@ const formatCategory = (category) =>
                                 </li>
                             ))}
                         </ul>
-                    </section>
+                    </details>
                 ))
             }
         </nav>
     </aside>
-</header>
 
 <script>
     const menu = document.getElementById("mobile-menu");
