@@ -17,32 +17,37 @@ const { groupedPosts } =
 ---
 
 <aside
-  class="hidden xl:block sticky top-[81px] h-[calc(100vh-73px)] w-[280px] shrink-0 overflow-y-auto border-r border-[var(--border)] px-8 py-8"
+  class="hidden xl:flex flex-col sticky top-[81px] h-[calc(100vh-81px)] w-[280px] shrink-0 overflow-y-auto border-r border-[var(--border)] px-8 py-8"
 >
     <nav class="space-y-10">
       {
         Object.entries(groupedPosts).map(
           ([category, posts]) => (
-            <section>
-              <h2
-                class="mb-4 border-b border-[var(--border)] pb-2 text-[11px] uppercase tracking-[0.25em] text-[var(--muted)]"
-              >
-                {formatCategory(category)}
-              </h2>
-    
-              <ul class="space-y-3">
-                {posts.map((post) => (
-                  <li>
-                    <a
-                      href={`/blog/${post.id.replace(/\.mdx?$/, "")}`}
-                      class="transition hover:italic"
-                    >
-                      {post.data.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </section>
+            <details open class="group">
+                <summary
+                  class="flex cursor-pointer items-center justify-between mb-4 border-b border-[var(--border)] pb-2 text-[11px] uppercase tracking-[0.25em] text-[var(--muted)]"
+                >
+                  {formatCategory(category)}
+                  <span class="text-xs text-[var(--muted)] group-open:hidden">
+                    [+]
+                  </span>
+                  <span class="text-xs text-[var(--muted)] group-open:inline-block hidden">
+                    [-]
+                  </span>
+                </summary>
+                <ul class="space-y-3">
+                  {posts.map((post) => (
+                    <li>
+                      <a
+                        href={`/blog/${post.id.replace(/\.mdx?$/, "")}`}
+                        class="transition hover:italic"
+                      >
+                        {post.data.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+            </details>
           )
         )
       }
@@ -50,17 +55,17 @@ const { groupedPosts } =
 
   <div class="mt-auto pt-10">
     <div
-      class="border-t border-[var(--border)] pt-6"
+      class="border-t border-[var(--border)] pt-6 flex justify-around"
     >
-      <p
-        class="text-xs uppercase tracking-[0.2em] text-[var(--muted)]"
-      >
-        Writing Since
-      </p>
-
-      <p class="mt-1 text-sm">
-        2026
-      </p>
+      <a href="#" aria-label="Github" class="text-xl hover:text-black transition-colors">
+        GH
+      </a>
+      <a href="#" aria-label="LinkedIn" class="text-xl hover:text-black transition-colors">
+        LI
+      </a>
+      <a href="#" aria-label="CV" class="text-xl hover:text-black transition-colors">
+        CV
+      </a>
     </div>
   </div>
 </aside>
