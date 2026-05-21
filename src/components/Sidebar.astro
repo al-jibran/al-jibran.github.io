@@ -1,4 +1,7 @@
 ---
+import githubIcon from '../assets/github.svg?raw';
+import linkedinIcon from '../assets/linkedin.svg?raw';
+import cvIcon from '../assets/cv.svg?raw';
 
 const formatCategory = (
   category: string
@@ -19,7 +22,7 @@ const { groupedPosts } =
 <aside
   class="hidden xl:flex flex-col sticky top-[81px] h-[calc(100vh-81px)] w-[280px] shrink-0 overflow-y-auto border-r border-[var(--border)] px-8 py-8"
 >
-    <nav class="space-y-10">
+    <nav class="space-y-10 grow">
       {
         Object.entries(groupedPosts).map(
           ([category, posts]) => (
@@ -53,19 +56,11 @@ const { groupedPosts } =
       }
     </nav>
 
-  <div class="mt-auto pt-10">
     <div
       class="border-t border-[var(--border)] pt-6 flex justify-around"
     >
-      <a href="#" aria-label="Github" class="text-xl hover:text-black transition-colors">
-        GH
-      </a>
-      <a href="#" aria-label="LinkedIn" class="text-xl hover:text-black transition-colors">
-        LI
-      </a>
-      <a href="#" aria-label="CV" class="text-xl hover:text-black transition-colors">
-        CV
-      </a>
+      <a href="#" aria-label="Github" class="text-xl text-[var(--muted)] hover:text-black transition-colors" title="Github" set:html={githubIcon} />
+      <a href="#" aria-label="LinkedIn" class="text-xl text-[var(--muted)] hover:text-black transition-colors" title="LinkedIn" set:html={linkedinIcon} />
+      <a href="#" aria-label="CV" class="text-xl text-[var(--muted)] hover:text-black transition-colors" title="Resume" set:html={cvIcon} />
     </div>
-  </div>
 </aside>

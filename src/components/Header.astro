@@ -1,4 +1,8 @@
 ---
+import githubIcon from '../assets/github.svg?raw';
+import linkedinIcon from '../assets/linkedin.svg?raw';
+import cvIcon from '../assets/cv.svg?raw';
+
 const { groupedPosts } = Astro.props;
 
 const formatCategory = (category) =>
@@ -56,7 +60,7 @@ const formatCategory = (category) =>
 <!-- Mobile drawer -->
 <aside
     id="mobile-menu"
-    class="fixed top-0 left-0 z-50 h-screen w-[300px] -translate-x-full overflow-y-auto border-r border-[var(--border)] bg-[var(--bg)] p-8 transition-transform duration-300"
+    class="fixed top-0 left-0 z-50 flex flex-col h-screen w-[300px] -translate-x-full overflow-y-auto border-r border-[var(--border)] bg-[var(--bg)] p-8 transition-transform duration-300"
 >
         <div class="flex items-center justify-end">
             <button id="menu-close" class="cursor-pointer"> ✕ </button>
@@ -95,6 +99,16 @@ const formatCategory = (category) =>
                 ))
             }
         </nav>
+
+        <div class="mt-auto pt-10">
+            <div
+                class="border-t border-[var(--border)] pt-6 flex justify-around"
+            >
+                <a href="#" aria-label="Github" class="text-xl text-[var(--muted)] hover:text-black transition-colors" set:html={githubIcon} />
+                <a href="#" aria-label="LinkedIn" class="text-xl text-[var(--muted)] hover:text-black transition-colors" set:html={linkedinIcon} />
+                <a href="#" aria-label="CV" class="text-xl text-[var(--muted)] hover:text-black transition-colors" set:html={cvIcon} />
+            </div>
+        </div>
     </aside>
 
 <script>
