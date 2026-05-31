@@ -18,7 +18,7 @@ const { title = "Jibran Dev" } = Astro.props;
     />
 
     <script is:inline>
-      const theme = localStorage.getItem("theme") || "sepia";
+      const theme = localStorage.getItem("theme") || "dark";
       document.documentElement.setAttribute("data-theme", theme);
     </script>
 

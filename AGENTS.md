@@ -59,7 +59,7 @@ Prefer:
 ## Color Palette
 
 ```css
-/* Default / Sepia */
+/* Sepia */
 :root, [data-theme="sepia"] {
   --bg: #f4ecd8;
   --text: #2c2826;
@@ -75,7 +75,7 @@ Prefer:
   --border: #e5e5e5;
 }
 
-/* Dark */
+/* Default: Dark */
 [data-theme="dark"] {
   --bg: #111111;
   --text: #f7f4ee;
