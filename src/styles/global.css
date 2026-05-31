@@ -23,6 +23,9 @@
    @apply prose-p:text-[18px];
    @apply prose-p:leading-9;
 
+   @apply prose-li:text-[18px];
+   @apply prose-li:leading-9;
+
    @apply prose-blockquote:border-l-2;
    @apply prose-blockquote:italic;
 
@@ -74,9 +77,12 @@
    background: #111111;
    color: #f7f4ee;
  }
-
  .editorial-prose ul,
- .editorial-prose ol,
+ .editorial-prose ol {
+     max-width: 90%;
+     text-align: justify;
+ }
+
  .editorial-prose blockquote {
    max-width: 80ch;
  }
