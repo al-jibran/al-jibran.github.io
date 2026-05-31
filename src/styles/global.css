@@ -74,6 +74,13 @@
    --border: #333333;
  }
 
+ [data-theme="amoled"] {
+   --bg: #000000;
+   --text: #e5e5e5;
+   --muted: #888888;
+   --border: #222222;
+ }
+
  html {
    background: var(--bg);
    color: var(--text);

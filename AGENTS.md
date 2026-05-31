@@ -82,6 +82,14 @@ Prefer:
   --muted: #a3a3a3;
   --border: #333333;
 }
+
+/* Amoled */
+[data-theme="amoled"] {
+  --bg: #000000;
+  --text: #e5e5e5;
+  --muted: #888888;
+  --border: #222222;
+}
 ```
 
 ## Icons & Assets
