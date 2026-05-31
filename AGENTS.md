@@ -59,11 +59,28 @@ Prefer:
 ## Color Palette
 
 ```css
-:root {
-  --bg: #f7f4ee;
+/* Default / Sepia */
+:root, [data-theme="sepia"] {
+  --bg: #f4ecd8;
+  --text: #2c2826;
+  --muted: #796e65;
+  --border: #dfd3bd;
+}
+
+/* Light */
+[data-theme="light"] {
+  --bg: #ffffff;
   --text: #111111;
   --muted: #666666;
-  --border: #d8d3ca;
+  --border: #e5e5e5;
+}
+
+/* Dark */
+[data-theme="dark"] {
+  --bg: #111111;
+  --text: #f7f4ee;
+  --muted: #a3a3a3;
+  --border: #333333;
 }
 ```
 

@@ -17,6 +17,11 @@ const { title = "Jibran Dev" } = Astro.props;
       content="width=device-width, initial-scale=1.0"
     />
 
+    <script is:inline>
+      const theme = localStorage.getItem("theme") || "sepia";
+      document.documentElement.setAttribute("data-theme", theme);
+    </script>
+
     <title>{title}</title>
   </head>
 

@@ -39,11 +39,22 @@ const formatCategory = (category) =>
             </div>
 
 
-            <button
-                class="inline-block border-b border-[var(--border)] pb-1 text-sm uppercase tracking-widest text-[var(--muted)] transition-colors hover:border-black hover:text-black cursor-pointer"
-            >
-                Theme
-            </button>
+            <div class="relative">
+                <button
+                    id="theme-toggle"
+                    class="inline-block border-b border-[var(--border)] pb-1 text-sm uppercase tracking-widest text-[var(--muted)] transition-colors hover:border-[var(--text)] hover:text-[var(--text)] cursor-pointer"
+                >
+                    Theme
+                </button>
+                <div
+                    id="theme-menu"
+                    class="absolute right-0 top-full mt-4 hidden flex-col border border-[var(--border)] bg-[var(--bg)] min-w-[120px] shadow-sm"
+                >
+                    <button data-theme-btn="light" class="px-4 py-3 text-left text-xs uppercase tracking-widest text-[var(--muted)] transition-colors hover:bg-[var(--border)] hover:text-[var(--text)] cursor-pointer">Light</button>
+                    <button data-theme-btn="sepia" class="px-4 py-3 text-left text-xs uppercase tracking-widest text-[var(--muted)] transition-colors hover:bg-[var(--border)] hover:text-[var(--text)] border-t border-[var(--border)] cursor-pointer">Sepia</button>
+                    <button data-theme-btn="dark" class="px-4 py-3 text-left text-xs uppercase tracking-widest text-[var(--muted)] transition-colors hover:bg-[var(--border)] hover:text-[var(--text)] border-t border-[var(--border)] cursor-pointer">Dark</button>
+                </div>
+            </div>
         </div>
     </div>
 </header>
@@ -98,9 +109,9 @@ const formatCategory = (category) =>
             <div
                 class="border-t border-[var(--border)] pt-6 flex justify-around"
             >
-                <a href="#" aria-label="Github" class="text-xl text-[var(--muted)] hover:text-black transition-colors" set:html={githubIcon} />
-                <a href="#" aria-label="LinkedIn" class="text-xl text-[var(--muted)] hover:text-black transition-colors" set:html={linkedinIcon} />
-                <a href="#" aria-label="CV" class="text-xl text-[var(--muted)] hover:text-black transition-colors" set:html={cvIcon} />
+                <a href="#" aria-label="Github" class="text-xl text-[var(--muted)] hover:text-[var(--text)] transition-colors" set:html={githubIcon} />
+                <a href="#" aria-label="LinkedIn" class="text-xl text-[var(--muted)] hover:text-[var(--text)] transition-colors" set:html={linkedinIcon} />
+                <a href="#" aria-label="CV" class="text-xl text-[var(--muted)] hover:text-[var(--text)] transition-colors" set:html={cvIcon} />
             </div>
         </div>
     </aside>
@@ -127,4 +138,36 @@ const formatCategory = (category) =>
     document.getElementById("menu-close")?.addEventListener("click", closeMenu);
 
     overlay?.addEventListener("click", closeMenu);
+
+    // Theme dropdown
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeMenu = document.getElementById("theme-menu");
+
+    themeToggle?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        themeMenu?.classList.toggle("hidden");
+        themeMenu?.classList.toggle("flex");
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!themeMenu?.contains(e.target as Node) && e.target !== themeToggle) {
+            themeMenu?.classList.add("hidden");
+            themeMenu?.classList.remove("flex");
+        }
+    });
+
+    // Theme switching logic
+    const themeButtons = document.querySelectorAll("[data-theme-btn]");
+
+    themeButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const theme = btn.getAttribute("data-theme-btn");
+            if (theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+                localStorage.setItem("theme", theme);
+            }
+            themeMenu?.classList.add("hidden");
+            themeMenu?.classList.remove("flex");
+        });
+    });
 </script>

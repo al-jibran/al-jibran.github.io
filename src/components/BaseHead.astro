@@ -32,6 +32,11 @@ const { title, description, image = FallbackImage } = Astro.props;
 />
 <meta name="generator" content={Astro.generator} />
 
+<script is:inline>
+  const theme = localStorage.getItem("theme") || "sepia";
+  document.documentElement.setAttribute("data-theme", theme);
+</script>
+
 <Font cssVariable="--font-playfair" preload />
 <Font cssVariable="--font-jetbrains" preload />
 <Font cssVariable="--font-source-serif" preload />
