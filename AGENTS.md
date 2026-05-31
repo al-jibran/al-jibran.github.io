@@ -32,7 +32,7 @@ Not:
 
 Visual goal:
 
-**The New York Times × Engineering Journal × Documentation Site**
+**Engineering Journal × Documentation Site**
 
 Avoid:
 - SaaS aesthetics
@@ -118,3 +118,40 @@ src/
 ```
 
 Folder name = category.
+
+## Agent Rules For Development
+
+When adding, modifying or deleting code:
+
+Do not build the project
+Do not delete files without permission
+
+
+## Agent Rules For Blog Content
+
+When modifying blog posts:
+
+Do not generate article ideas.
+Do not generate technical explanations.
+Do not generate implementations for topics discussed in articles.
+Do not rewrite content to optimize engagement, SEO, or virality.
+Do not change the author's tone or opinions.
+Preserve grammatical imperfections when they are stylistic.
+
+You may:
+
+Fix grammar mistakes.
+Fix spelling mistakes.
+Fix broken Markdown.
+Fix broken links.
+Point out factual inaccuracies.
+Suggest clearer phrasing when requested.
+
+When editing technical articles:
+
+Prefer accuracy over readability.
+Do not simplify technical concepts unless explicitly requested.
+Do not replace examples with AI-generated alternatives.
+Do not add content that the author has not written or verified.
+
+The purpose of this blog is to document the author's understanding of software systems, algorithms, abstractions, and implementations.
