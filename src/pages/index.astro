@@ -6,8 +6,13 @@ import Sidebar from "../components/Sidebar.astro";
 import { getGroupedPosts }
 from "../lib/blog";
 
+import { getCollection } from "astro:content";
+
 const groupedPosts =
   await getGroupedPosts();
+
+const allPosts = await getCollection("blog", ({ data }) => !data.draft);
+const featuredPosts = allPosts.filter((post) => post.data.featured);
 ---
 
 <MainLayout title="Jibran Dev">
@@ -17,7 +22,7 @@ const groupedPosts =
 
         <main class="flex-1">
             <section
-              class="border-b border-[var(--border)] px-10 py-10 lg:px-20"
+              class="px-10 py-10 lg:px-20"
             >
               <p
                 class="text-sm tracking-wider uppercase font-bold"
@@ -37,44 +42,51 @@ const groupedPosts =
                 >
                   A blog where I write about the ideas, algorithms, systems, and code behind software.
                 </p>
+
+                <div class="mt-10">
+                    <a
+                      href="/blog/the-blog/introduction"
+                      class="inline-block border-l-4 border-[var(--border)] pl-5 py-1 text-sm uppercase tracking-widest text-[var(--muted)] transition-colors hover:border-black hover:text-black"
+                    >
+                        Introduction
+                    </a>
+                </div>
               </div>
             </section>
 
-            <section class="px-10 py-14 lg:px-20">
-                <div class="mb-8 flex items-center justify-between">
-                    <h2 class="text-3xl">Featured Essays</h2>
+            {featuredPosts.length > 0 && (
+                <section class="border-t border-[var(--border)] px-10 py-14 lg:px-20">
+                    <div class="mb-8 flex items-center justify-between">
+                        <h2 class="text-3xl">Featured</h2>
+                    </div>
 
-                    <span class="text-sm text-[var(--muted)]">
-                        Selected writing
-                    </span>
-                </div>
+                    <div class="grid gap-6 xl:grid-cols-3">
+                        {
+                            featuredPosts.map((post) => (
+                                <a href={`/blog/${post.id.replace(/\.mdx?$/, "")}`} class="block outline-none">
+                                    <article class="group cursor-pointer border border-[var(--border)] p-8 transition hover:-translate-y-1 h-full flex flex-col">
+                                        <p class="text-xs uppercase tracking-[0.25em] text-[var(--muted)]">
+                                            {post.id.split("/")[0].split("-").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}
+                                        </p>
 
-                <div class="grid gap-6 xl:grid-cols-3">
-                    {
-                        [1, 2, 3].map(() => (
-                            <article class="group cursor-pointer border border-[var(--border)] p-8 transition hover:-translate-y-1">
-                                <p class="text-xs uppercase tracking-[0.25em] text-[var(--muted)]">
-                                    System Design
-                                </p>
+                                        <h3 class="mt-5 text-3xl leading-tight transition group-hover:underline">
+                                            {post.data.title}
+                                        </h3>
 
-                                <h3 class="mt-5 text-3xl leading-tight transition group-hover:underline">
-                                    Designing an AI Customer Support System
-                                </h3>
+                                        <p class="mt-5 leading-7 text-[var(--muted)] flex-1">
+                                            {post.data.description}
+                                        </p>
 
-                                <p class="mt-5 leading-7 text-[var(--muted)]">
-                                    How queues, workers and asynchronous
-                                    workflows make scalable support systems
-                                    possible.
-                                </p>
-
-                                <div class="mt-5 border-t border-[var(--border)] pt-4 text-sm text-[var(--muted)]">
-                                    May 10, 2026 · 8 min read
-                                </div>
-                            </article>
-                        ))
-                    }
-                </div>
-            </section>
+                                        <div class="mt-5 border-t border-[var(--border)] pt-4 text-sm text-[var(--muted)]">
+                                            {post.data.pubDate} &middot; {post.data.readingTime}
+                                        </div>
+                                    </article>
+                                </a>
+                            ))
+                        }
+                    </div>
+                </section>
+            )}
         </main>
     </div>
 </MainLayout>
