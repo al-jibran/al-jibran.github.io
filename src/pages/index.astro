@@ -22,7 +22,7 @@ function formatDate(dateStr: string) {
   const day = date.getDate().toString().padStart(2, "0");
   const month = date.toLocaleString("en-US", { month: "short" });
   const year = date.getFullYear();
-  return `${day}-${month}-${year}`;
+  return `${day} ${month}, ${year}`;
 }
 ---
 
@@ -31,98 +31,76 @@ function formatDate(dateStr: string) {
     <div class="flex min-h-screen">
         <Sidebar groupedPosts={groupedPosts}/>
 
-        <main class="flex-1">
-            <section
-              class="px-10 pt-16 pb-24 lg:px-20 lg:pt-24 lg:pb-32"
-            >
-              <div class="flex flex-col xl:flex-row gap-16 justify-between">
-                <div class="max-w-3xl flex-1">
-                  <p
-                    class="text-sm tracking-wider uppercase font-bold"
-                  >
-                      Welcome
-                  </p>
+        <main class="flex-1 flex flex-col xl:flex-row min-w-0">
+            <!-- First Column -->
+            <div class="flex-1 flex flex-col min-w-0">
+                <!-- Section 1: Welcome -->
+                <section class="h-[24vh] min-h-[250px] border-b border-[var(--border)] flex items-end p-8 lg:p-12">
+                    <h1 class="text-7xl lg:text-[10rem] leading-none text-center">JIBRAN</h1>
+                </section>
 
-                  <div class="mt-6">
-                    <h1
-                      class="text-5xl leading-[1.05] tracking-tight lg:text-6xl"
-                    >
-                        Hi, I'm Jibran
-                    </h1>
-
-                    <p
-                      class="mt-6 text-lg leading-8 text-[var(--muted)]"
-                    >
-                      A blog where I write about the ideas, algorithms, systems, and code behind software.
+                <!-- Section 2: Description & Button -->
+                <section class="border-b border-[var(--border)] p-8 lg:p-12 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+                    <p class="text-md leading-relaxed text-[var(--muted)] max-w-2xl">
+                        A blog where I write about the ideas, algorithms, systems, and code behind software.
                     </p>
-
-                    <div class="mt-10">
+                    <div class="shrink-0">
                         <a
-                          href="/blog/the-blog/introduction"
-                          class="inline-block border-l-4 border-[var(--border)] pl-5 py-1 text-sm uppercase tracking-widest text-[var(--muted)] transition-colors hover:border-[var(--text)] hover:text-[var(--text)]"
+                            href="/blog/the-blog/introduction"
+                            class="inline-block border border-[var(--border)] px-8 py-4 text-sm uppercase tracking-widest text-[var(--text)] transition-colors hover:border-[var(--text)] hover:bg-[var(--text)] hover:text-[var(--bg)]"
                         >
                             Introduction
                         </a>
                     </div>
-                  </div>
-                </div>
-
-                <div class="hidden xl:block w-[320px] shrink-0 border-l border-[var(--border)] pl-10">
-                  <p class="text-xs uppercase tracking-[0.2em] text-[var(--muted)] mb-8">
-                    Recent Writing
-                  </p>
-
-                  <ul class="space-y-8">
-                    {recentPosts.map((post) => (
-                      <li>
-                        <a href={`/blog/${post.id.replace(/\.mdx?$/, "")}`} class="group block outline-none">
-                          <h4 class="text-xl leading-snug transition-colors group-hover:text-[var(--muted)]">
-                            {post.data.title}
-                          </h4>
-                          <p class="mt-2 text-xs uppercase tracking-widest text-[var(--muted)]">
-                            {formatDate(post.data.pubDate)}
-                          </p>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </section>
-
-            {featuredPosts.length > 0 && (
-                <section class="border-t border-[var(--border)] px-10 py-14 lg:px-20">
-                    <div class="mb-8 flex items-center justify-between">
-                        <h2 class="text-3xl">Featured</h2>
-                    </div>
-
-                    <div class="grid gap-6 xl:grid-cols-3">
-                        {
-                            featuredPosts.map((post) => (
-                                <a href={`/blog/${post.id.replace(/\.mdx?$/, "")}`} class="block outline-none">
-                                    <article class="group cursor-pointer border border-[var(--border)] p-8 transition hover:-translate-y-1 h-full flex flex-col">
-                                        <p class="text-xs uppercase tracking-[0.25em] text-[var(--muted)]">
-                                            {post.id.split("/")[0].split("-").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}
-                                        </p>
-
-                                        <h3 class="mt-5 text-3xl leading-tight transition group-hover:underline">
-                                            {post.data.title}
-                                        </h3>
-
-                                        <p class="mt-5 leading-7 text-[var(--muted)] flex-1">
-                                            {post.data.description}
-                                        </p>
-
-                                        <div class="mt-5 border-t border-[var(--border)] pt-4 text-sm text-[var(--muted)]">
-                                            {post.data.pubDate} &middot; {post.data.readingTime}
-                                        </div>
-                                    </article>
-                                </a>
-                            ))
-                        }
-                    </div>
                 </section>
-            )}
+
+                <!-- Section 3: Featured Tiles -->
+                {featuredPosts.length > 0 && (
+                    <section class="grid grid-cols-1 min-[405px]:grid-cols-2 2xl:grid-cols-3 xl:flex-1">
+                        {featuredPosts.slice(0, 3).map((post, i) => (
+                            <a href={`/blog/${post.id.replace(/\.mdx?$/, "")}`} class={`group aspect-square flex flex-col outline-none border-[var(--border)] border-b ${i === 0 ? 'min-[405px]:border-r' : ''} ${i === 1 ? '2xl:border-r' : ''} ${i === 2 ? 'min-[405px]:border-r 2xl:border-r-0' : ''} hover:bg-[var(--text)] hover:text-[var(--bg)] transition-colors overflow-hidden`}>
+                                <div class="border-b border-[var(--border)] bg-[var(--surface)] px-6 lg:px-8 py-3 lg:py-4 transition-colors group-hover:bg-transparent group-hover:border-[var(--bg)]/30">
+                                    <p class="text-[10px] lg:text-xs uppercase tracking-[0.25em] text-[var(--bg)] group-hover:text-[var(--bg)]/70">
+                                        {post.id.split("/")[0].split("-").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}
+                                    </p>
+                                </div>
+                                <div class="flex-1 flex flex-col p-6 lg:p-8 min-h-0">
+                                    <h3 class="text-xl lg:text-3xl leading-tight">
+                                        {post.data.title}
+                                    </h3>
+                                    <p class="mt-4 lg:mt-6 text-sm lg:text-base leading-relaxed text-[var(--muted)] group-hover:text-[var(--bg)]/70 flex-1 line-clamp-3 lg:line-clamp-4">
+                                        {post.data.description}
+                                    </p>
+                                    <div class="mt-4 lg:mt-6 pt-4 lg:pt-6 border-t border-[var(--border)] group-hover:border-[var(--bg)]/30 text-[10px] lg:text-xs text-[var(--muted)] group-hover:text-[var(--bg)]/70 uppercase tracking-widest shrink-0">
+                                        {formatDate(post.data.pubDate)}
+                                    </div>
+                                </div>
+                            </a>
+                        ))}
+                    </section>
+                )}
+            </div>
+
+            <!-- Second Column: Recent Writings -->
+            <aside class="hidden xl:flex w-[320px] shrink-0 border-l border-[var(--border)] flex-col bg-[var(--bg)]">
+                <div class="p-8 border-b border-[var(--border)] flex items-center h-auto">
+                    <h2 class="text-xs uppercase tracking-[0.2em] font-bold text-[var(--muted)]">Recent Writing</h2>
+                </div>
+                <ul class="flex flex-col">
+                    {recentPosts.map((post, i) => (
+                        <li>
+                            <a href={`/blog/${post.id.replace(/\.mdx?$/, "")}`} class={`group block p-8 outline-none border-[var(--border)] transition-colors hover:bg-[var(--text)] hover:text-[var(--bg)] ${i !== recentPosts.length - 1 ? 'border-b' : ''}`}>
+                                <h4 class="text-xl leading-snug">
+                                    {post.data.title}
+                                </h4>
+                                <p class="mt-4 text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--bg)]/70">
+                                    {formatDate(post.data.pubDate)}
+                                </p>
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </aside>
         </main>
     </div>
 </MainLayout>
