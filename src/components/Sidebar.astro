@@ -43,7 +43,7 @@ const { groupedPosts = {} } =
                     <li>
                       <a
                         href={`/blog/${post.id.replace(/\.mdx?$/, "")}`}
-                        class="transition hover:italic"
+                        class="block w-full transition-colors border-b border-transparent pb-1 hover:border-[var(--border)]"
                       >
                         {post.data.title}
                       </a>

@@ -94,7 +94,7 @@ const formatCategory = (category) =>
                                             /\.mdx?$/,
                                             "",
                                         )}`}
-                                        class="hover:italic"
+                                        class="block w-full transition-colors border-b border-transparent pb-1 hover:border-[var(--border)]"
                                     >
                                         {post.data.title}
                                     </a>
@@ -112,7 +112,6 @@ const formatCategory = (category) =>
             >
                 <a href="#" aria-label="Github" class="text-xl text-[var(--muted)] hover:text-[var(--text)] transition-colors" set:html={githubIcon} />
                 <a href="#" aria-label="LinkedIn" class="text-xl text-[var(--muted)] hover:text-[var(--text)] transition-colors" set:html={linkedinIcon} />
-                <a href="#" aria-label="CV" class="text-xl text-[var(--muted)] hover:text-[var(--text)] transition-colors" set:html={cvIcon} />
             </div>
         </div>
     </aside>
