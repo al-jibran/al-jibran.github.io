@@ -60,36 +60,40 @@ Prefer:
 
 ```css
 /* Sepia */
-:root, [data-theme="sepia"] {
-  --bg: #f4ecd8;
-  --text: #2c2826;
-  --muted: #796e65;
-  --border: #dfd3bd;
-}
+ :root, [data-theme="sepia"] {
+   --bg: #f4ecd8;
+   --text: #2c2826;
+   --muted: #796e65;
+   --border: #afa3ad;
+   --surface: rgba(50, 50, 50, 0.7);
+ }
 
 /* Light */
-[data-theme="light"] {
-  --bg: #ffffff;
-  --text: #111111;
-  --muted: #666666;
-  --border: #e5e5e5;
-}
+ [data-theme="light"] {
+   --bg: #ffffff;
+   --text: #111111;
+   --muted: #666666;
+   --border: #a5a5a5;
+   --surface: rgba(0, 0, 0);
+ }
 
 /* Default: Dark */
-[data-theme="dark"] {
-  --bg: #111111;
-  --text: #f7f4ee;
-  --muted: #a3a3a3;
-  --border: #333333;
-}
+ [data-theme="dark"] {
+   --bg: #111111;
+   --text: #f7f4ee;
+   --muted: #a3a3a3;
+   --border: #737373;
+   --surface: rgba(255, 255, 255, 0.75);
+ }
 
 /* Amoled */
-[data-theme="amoled"] {
-  --bg: #000000;
-  --text: #e5e5e5;
-  --muted: #888888;
-  --border: #222222;
-}
+ [data-theme="amoled"] {
+   --bg: #000000;
+   --text: #e5e5e5;
+   --muted: #888888;
+   --border: #626262;
+   --surface: rgba(255, 255, 255, 0.85);
+ }
 ```
 
 ## Icons & Assets
