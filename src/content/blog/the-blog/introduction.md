@@ -62,9 +62,3 @@ I will have more to say about burnout, the missing pieces, AI, abstractions, and
 For now, though, we're done with the introductions.
 
 Let's head to the terminal and take off.
-
-### __*Posts you might be interested in*__
-
-- [Writing code again](https://www.google.com/)
-- [Rate Limiter (Basic)](https://www.google.com/)
-- [Rate Limiter (Sliding Window)](https://www.google.com/)
