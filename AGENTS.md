@@ -1,38 +1,13 @@
 # AGENTS.md
 
-## Project Overview
-
-This is a personal technical blog for **software engineering**, focused on:
-
-- Software Engineering
-- Software Design
-- System Design
-- Problem Solving
-- Engineering Notes
-- Real problems solved
-
-The goal is **deep technical writing**, not a portfolio website.
-
-This site should feel like:
-
-> A software engineering newspaper / engineering journal
-
-Not:
-
-> A SaaS landing page, portfolio, Medium clone, or startup blog.
-
 ## Tech Stack
 
 - Astro v6
 - TailwindCSS v4
-- React v19 installed, but avoid React unless absolutely necessary
+- React v19 installed
 - Prefer `.astro` components over React
 
 ## Design Philosophy
-
-Visual goal:
-
-**Engineering Journal × Documentation Site**
 
 Avoid:
 - SaaS aesthetics
@@ -43,107 +18,51 @@ Avoid:
 - excessive shadows
 
 Prefer:
+- tile layout styling
 - serif typography
-- thin borders
-- asymmetry
 - editorial spacing
-- understated interactions
-- black & white aesthetic
-
-## Typography
-
-- Headings: Playfair Display
-- Body: Source Serif 4
-- Code: JetBrains Mono
-
-## Color Palette
-
-```css
-/* Sepia */
- :root, [data-theme="sepia"] {
-   --bg: #f4ecd8;
-   --text: #2c2826;
-   --muted: #796e65;
-   --border: #afa3ad;
-   --surface: rgba(50, 50, 50, 0.7);
- }
-
-/* Light */
- [data-theme="light"] {
-   --bg: #ffffff;
-   --text: #111111;
-   --muted: #666666;
-   --border: #a5a5a5;
-   --surface: rgba(0, 0, 0);
- }
-
-/* Default: Dark */
- [data-theme="dark"] {
-   --bg: #111111;
-   --text: #f7f4ee;
-   --muted: #a3a3a3;
-   --border: #737373;
-   --surface: rgba(255, 255, 255, 0.75);
- }
-
-/* Amoled */
- [data-theme="amoled"] {
-   --bg: #000000;
-   --text: #e5e5e5;
-   --muted: #888888;
-   --border: #626262;
-   --surface: rgba(255, 255, 255, 0.85);
- }
-```
 
 ## Icons & Assets
 
 - Place SVG files directly in `src/assets/`.
 - Import SVGs with the `?raw` suffix and inject them into components using `set:html` (e.g. `import myIcon from '../assets/icon.svg?raw'` and `<div set:html={myIcon} />`).
-- This allows SVGs to inherit Tailwind text colors (like `text-[var(--muted)]` and `hover:text-black`) perfectly.
-
-## Layout Philosophy
-
-Desktop layout:
-
-Sidebar | Content | TOC
-
-### Sidebar
-Navigation only.
-
-Do NOT put:
-- intro text
-- quotes
-- branding copy
-- fluff
-
-Sidebar = article index grouped by category.
-
-### Content
-Primary reading experience.
-
-### TOC
-Right-side table of contents.
-Only H2 headings.
-
-## Header
-
-File: `Header.astro`
-
-## Sidebar
-
-File: `Sidebar.astro`
 
 ## Content Architecture
 
+Quick lookup paths:
+
 ```txt
 src/
-└── content/
-    └── blog/
-        ├── software-design/
-        ├── system-design/
-        ├── software-engineering/
-        └── problem-solving/
+├── assets/
+│   ├── fonts/                  # Playfair Display, Source Serif 4, JetBrains Mono
+│   ├── github.svg
+│   ├── linkedin.svg
+│   └── cv.svg
+├── components/
+│   ├── BaseHead.astro          # shared metadata/head tags
+│   ├── Footer.astro
+│   ├── Header.astro
+│   ├── HeaderLink.astro
+│   └── Sidebar.astro           # article index grouped by category
+├── content/
+│   └── blog/
+│       ├── commentary/         # commentary essays
+│       ├── the-blog/           # posts about the blog itself
+│       └── resources/          # recommendations/resources category
+├── layouts/
+│   ├── BlogPost.astro          # post layout and reading view
+│   └── MainLayout.astro        # site shell
+├── lib/
+│   └── blog.ts                 # blog collection helpers/category grouping
+├── pages/
+│   ├── blog/[...slug].astro    # dynamic blog post routes
+│   ├── index.astro             # homepage
+│   ├── about.astro
+│   └── rss.xml.js              # RSS feed metadata/content
+├── styles/
+│   └── global.css              # global styling and typography
+├── consts.ts                   # site title/description constants
+└── content.config.ts           # Astro content collection schema
 ```
 
 Folder name = category.
@@ -154,6 +73,7 @@ When adding, modifying or deleting code:
 
 Do not build the project
 Do not delete files without permission
+When there is a contradiction between AGENTS.md rules and the source code, notify the user and ask before making changes.
 
 
 ## Agent Rules For Blog Content
@@ -182,5 +102,3 @@ Prefer accuracy over readability.
 Do not simplify technical concepts unless explicitly requested.
 Do not replace examples with AI-generated alternatives.
 Do not add content that the author has not written or verified.
-
-The purpose of this blog is to document the author's understanding of software systems, algorithms, abstractions, and implementations.
