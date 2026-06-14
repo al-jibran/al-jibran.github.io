@@ -71,30 +71,19 @@ Folder name = category.
 
 When adding, modifying or deleting code:
 
-Do not build the project
+Do not build the project 
 Do not delete files without permission
-When there is a contradiction between AGENTS.md rules and the source code, notify the user and ask before making changes.
-
+In case of a conflict between AGENTS.md and the source code, ask the author before changing the source code.
 
 ## Agent Rules For Blog Content
 
 When modifying blog posts:
 
-Do not generate article ideas.
-Do not generate technical explanations.
-Do not generate implementations for topics discussed in articles.
-Do not rewrite content to optimize engagement, SEO, or virality.
-Do not change the author's tone or opinions.
-Preserve grammatical imperfections when they are stylistic.
+Do not generate article ideas. Do not generate technical explanations. Do not generate implementations for topics discussed in articles. Do not rewrite content to optimize engagement, SEO, or virality. Do not change the author's tone or opinions. Preserve grammatical imperfections when they are stylistic.
 
 You may:
 
-Fix grammar mistakes.
-Fix spelling mistakes.
-Fix broken Markdown.
-Fix broken links.
-Point out factual inaccuracies.
-Suggest clearer phrasing when requested.
+Fix grammar mistakes. Fix spelling mistakes. Fix broken Markdown. Fix broken links. Point out factual inaccuracies. Suggest clearer phrasing when requested.
 
 When editing technical articles:
 

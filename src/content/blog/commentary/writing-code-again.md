@@ -94,7 +94,7 @@ That statement sure is something.
 
 ## Beyond Implementation
 
-There are plenty of interesting problems to solve beyond implementation. Whether system design, software architecture, and other big-picture problems are more your thing or you simply want to become a better engineer, have a look through [my recommendations](link to blog post). I'll keep updating them with resources I find useful and I'll also write about these topics on this blog, so check back from time to time.
+There are plenty of interesting problems to solve beyond implementation. Whether system design, software architecture, and other big-picture problems are more your thing or you simply want to become a better engineer, have a look through [my recommendations](/blog/recommendations). I'll keep updating them with resources I find useful and I'll also write about these topics on this blog, so check back from time to time.
 
 Regardless of where you find joy in software engineering, I do believe before using AI, you must understand what it is doing. After all, AI is an abstraction, and [abstractions leak](https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/).
 
