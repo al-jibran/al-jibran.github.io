@@ -4,61 +4,59 @@ import {
   render,
 } from "astro:content";
 
-import { getGroupedPosts }
-from "../../lib/blog";
+import { getGroupedPosts } from "../../lib/blog";
 
 import MainLayout from "../../layouts/MainLayout.astro";
 import Header from "../../components/Header.astro";
 import Sidebar from "../../components/Sidebar.astro";
 
-
 export async function getStaticPaths() {
-  const posts =
-    await getCollection("blog");
+  const posts = await getCollection("blog");
 
   return posts.map((post) => ({
     params: {
-      slug:
-        post.id.replace(
-          /\.mdx?$/,
-          ""
-        ),
+      slug: post.id.replace(
+        /\.mdx?$/,
+        ""
+      ),
     },
     props: { post },
   }));
 }
 
-const groupedPosts =
-  await getGroupedPosts();
+const groupedPosts = await getGroupedPosts();
 
 const { post } = Astro.props;
 
-const { Content, headings } =
-  await render(post);
+const { Content, headings } = await render(post);
+
+const tocHeadings = headings.filter(
+  heading =>
+    heading.depth === 2 ||
+    heading.depth === 3
+);
+
+const getTocBranch = (index: number) => {
+  const heading = tocHeadings[index];
+  const nextHeading = tocHeadings[index + 1];
+
+  if (!heading || heading.depth !== 3) return "";
+
+  return nextHeading?.depth === 3 ? "├──" : "└──";
+};
 ---
 
 <MainLayout title={post.data.title}>
-    <Header groupedPosts={groupedPosts}/>
+  <Header groupedPosts={groupedPosts} />
 
   <div class="flex min-h-screen">
-      <Sidebar groupedPosts={groupedPosts}/>
+    <Sidebar groupedPosts={groupedPosts} />
 
-    <main
-        class="flex flex-1 px-5 py-8 sm:px-8 lg:px-16 min-w-0"
-    >
-        <div
-            class="flex min-w-0 w-full flex-col gap-12 xl:flex-row xl:gap-16"
-        >
-          <article
-            class="min-w-0 flex-1 max-w-5xl"
-          >
-
-        <div
-          class="mb-10 border-b border-[var(--border)] pb-8"
-        >
-          <p
-            class="text-xs uppercase tracking-[0.2em] text-[var(--muted)] mb-3"
-          >
+    <main class="flex flex-1 px-5 py-8 sm:px-8 lg:px-16 min-w-0">
+      <div class="flex min-w-0 w-full flex-col gap-12 xl:flex-row xl:gap-16">
+        <article class="min-w-0 flex-1 max-w-5xl">
+          <div class="mb-10 border-b border-[var(--border)] pb-8">
+            <p class="text-xs uppercase tracking-[0.2em] text-[var(--muted)] mb-3">
               {
                 post.id
                   .split("/")[0]
@@ -70,90 +68,85 @@ const { Content, headings } =
                   )
                   .join(" ")
               }
-          </p>
+            </p>
 
-          <h1 class="text-4xl lg:text-5xl leading-tight mb-3 mt-0">
-            {post.data.title}
-          </h1>
+            <h1 class="text-4xl lg:text-5xl leading-tight mb-3 mt-0">
+              {post.data.title}
+            </h1>
 
-          <p
-            class="italic text-lg text-[var(--muted)] mb-3"
-          >
-            {post.data.kicker}
-          </p>
+            <p class="italic text-lg text-[var(--muted)] mb-3">
+              {post.data.kicker}
+            </p>
 
-
-          <div
-            class="text-sm text-[var(--muted)]"
-          >
-            {post.data.readingTime}
+            <div class="text-sm text-[var(--muted)]">
+              {post.data.readingTime}
+            </div>
           </div>
-        </div>
 
-        {
-          headings.length > 0 && (
-            <details
-              class="mb-10 border-y border-[var(--border)] py-4 xl:hidden"
-            >
-              <summary
-                class="cursor-pointer text-sm uppercase tracking-[0.2em]"
-              >
-                On this page
-              </summary>
+          {
+            tocHeadings.length > 0 && (
+              <details class="mb-10 border-y border-[var(--border)] py-4 xl:hidden">
+                <summary class="cursor-pointer text-sm uppercase tracking-[0.2em]">
+                  On this page
+                </summary>
 
-              <ul class="mt-4 space-y-3">
-                {headings
-                  .filter(
-                    heading =>
-                      heading.depth === 2
-                  )
-                  .map((heading) => (
+                <ul class="mt-5 space-y-3">
+                  {tocHeadings.map((heading, index) => (
                     <li>
                       <a
                         href={`#${heading.slug}`}
-                        class="text-sm text-[var(--muted)]"
+                        class={`block text-[var(--muted)] ${heading.depth === 3 ? "pl-3 text-xs" : "text-sm"}`}
                       >
+                        {heading.depth === 3 && (
+                          <span
+                            aria-hidden="true"
+                            class="mr-2 font-mono text-[var(--border)]"
+                          >
+                            {getTocBranch(index)}
+                          </span>
+                        )}
                         {heading.text}
                       </a>
                     </li>
                   ))}
-              </ul>
-            </details>
-          )
-        }
-        <div class="editorial-prose">
-          <Content />
-        </div>
-      </article>
-      <aside
-        class="sticky top-[110px] hidden h-fit w-[220px] shrink-0 xl:block"
-      >
-        <p
-          class="hidden xl:block sticky top-[110px] h-fit w-[220px] shrink-0"
-        >
-          On this page
-        </p>
+                </ul>
+              </details>
+            )
+          }
 
-        <nav>
-          <ul class="space-y-3">
-            {headings
-              .filter(
-                heading =>
-                  heading.depth === 2
-              )
-              .map((heading) => (
+          <div class="editorial-prose">
+            <Content />
+          </div>
+        </article>
+
+        <aside class="sticky top-[110px] hidden h-fit w-[220px] shrink-0 xl:block">
+          <p class="hidden xl:block sticky top-[110px] h-fit w-[220px] shrink-0">
+            On this page
+          </p>
+
+          <nav>
+            <ul class="mt-5 space-y-3">
+              {tocHeadings.map((heading, index) => (
                 <li>
                   <a
                     href={`#${heading.slug}`}
-                    class="block text-sm leading-6 text-[var(--muted)] transition hover:text-[var(--text)] hover:italic"
+                    class={`block leading-6 text-[var(--muted)] transition hover:text-[var(--text)] hover:italic ${heading.depth === 3 ? "pl-3 text-xs" : "text-sm"}`}
                   >
+                    {heading.depth === 3 && (
+                      <span
+                        aria-hidden="true"
+                        class="mr-2 font-mono text-[var(--border)]"
+                      >
+                        {getTocBranch(index)}
+                      </span>
+                    )}
                     {heading.text}
                   </a>
                 </li>
               ))}
-          </ul>
-        </nav>
-      </aside>
+            </ul>
+          </nav>
+        </aside>
       </div>
     </main>
   </div>
