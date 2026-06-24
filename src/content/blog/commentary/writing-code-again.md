@@ -2,7 +2,7 @@
 title: "Writing Code Again"
 kicker: "I am still worthy."
 description: "Thoughts on finding joy in software development writing code"
-pubDate: "May 30, 2026"
+pubDate: "10 June, 2026"
 featured: false
 draft: true
 readingTime: "4 min read"

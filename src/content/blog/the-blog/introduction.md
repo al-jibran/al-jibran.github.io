@@ -1,7 +1,7 @@
 ---
 title: "Pilot"
 kicker: "\"God bless you, Ted. You're reading my blog.\""
-pubDate: "May 29, 2026"
+pubDate: "5 June, 2026"
 featured: false 
 readingTime: "3 min read"
 ---
