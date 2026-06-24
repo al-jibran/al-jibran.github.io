@@ -39,10 +39,8 @@ src/
 │   ├── linkedin.svg
 │   └── cv.svg
 ├── components/
-│   ├── BaseHead.astro          # shared metadata/head tags
 │   ├── Footer.astro
 │   ├── Header.astro
-│   ├── HeaderLink.astro
 │   └── Sidebar.astro           # article index grouped by category
 ├── content/
 │   └── blog/
@@ -50,14 +48,12 @@ src/
 │       ├── the-blog/           # posts about the blog itself
 │       └── resources/          # recommendations/resources category
 ├── layouts/
-│   ├── BlogPost.astro          # post layout and reading view
 │   └── MainLayout.astro        # site shell
 ├── lib/
 │   └── blog.ts                 # blog collection helpers/category grouping
 ├── pages/
 │   ├── blog/[...slug].astro    # dynamic blog post routes
 │   ├── index.astro             # homepage
-│   ├── about.astro
 │   └── rss.xml.js              # RSS feed metadata/content
 ├── styles/
 │   └── global.css              # global styling and typography
