@@ -2,6 +2,7 @@
 import githubIcon from '../assets/github.svg?raw';
 import linkedinIcon from '../assets/linkedin.svg?raw';
 
+import { SITE_HEADER_TITLE } from '../consts.ts';
 import { type GroupedPosts } from '../lib/blog.ts';
 
 interface Props {
@@ -23,9 +24,9 @@ const formatCategory = (category: string) =>
     <div class="flex">
         <!-- Desktop left -->
         <div
-            class="hidden xl:flex w-[280px] shrink-0 items-center border-r border-[var(--border)] px-8 py-5"
+            class="hidden xl:flex w-[280px] shrink-0 items-center justify-center border-r border-[var(--border)] px-8 py-5"
         >
-            <h1 class="text-3xl cursor-default"><a href="/">JIBRAN.DEV</a></h1>
+            <h1 class="text-3xl cursor-default"><a href="/">{SITE_HEADER_TITLE}</a></h1>
         </div>
 
         <!-- Main header -->
@@ -36,7 +37,7 @@ const formatCategory = (category: string) =>
             <div class="flex items-baseline gap-4 xl:hidden">
                 <button id="menu-open" class="text-xl cursor-pointer">☰</button>
                 <span class="text-sm uppercase tracking-[0.2em]">
-                    <a href="/">JIBRAN DEV</a>
+                    <a href="/">{SITE_HEADER_TITLE}</a>
                 </span>
             </div>
 
