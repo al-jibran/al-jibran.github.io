@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Footer from "../components/Footer.astro";
 
 interface Props {
   title?: string;
@@ -30,6 +31,7 @@ const { title = "Jibran Dev" } = Astro.props;
       class="mx-auto min-h-screen max-w-full border-x border-[var(--border)] bg-[var(--bg)] shadow-sm"
     >
       <slot />
+      <Footer />
     </div>
   </body>
 </html>
