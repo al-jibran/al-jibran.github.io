@@ -8,7 +8,7 @@ readingTime: "3 min read"
 
 This is a growing list of resources I have benefited from immensely.
 
-If you want to contribute to this list, feel free to send me an email or message me on LinkedIn.
+If you want to contribute to this list, feel free to message me on LinkedIn.
 
 > **Note on free resources**
 >
@@ -16,7 +16,7 @@ If you want to contribute to this list, feel free to send me an email or message
 >
 > If you benefit from them, support the authors however you can: follow their work, buy their content, buy them a coffee, or tell other people about what they made.
 >
-> If any of these are no longer free, let me know by raising an issue on GitHub or by sending me an email.
+> If any of these are no longer free, let me know by raising an issue on GitHub or by messaging me on LinkedIn.
 
 ## Free Resources
 

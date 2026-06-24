@@ -68,7 +68,7 @@ You don't have to build the next billion-dollar app, you don't even have to buil
 
 If you want some ideas on what to build next or want to learn "that thing you use but don't know how it works", I hope you find something useful on this blog.
 
-I'd be interested in hearing what has helped others deal with burnout or what they're currently working on. Feel free to send me an email or connect with me on LinkedIn.
+I'd be interested in hearing what has helped others deal with burnout or what they're currently working on. Feel free to connect with me on LinkedIn.
 
 ## AI Beyond This Blog
 
