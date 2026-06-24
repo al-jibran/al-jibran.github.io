@@ -41,6 +41,7 @@
    @apply prose-h3:text-2xl;
    @apply prose-h3:mt-8;
    @apply prose-h3:mb-3;
+   @apply prose-h3:font-bold;
 
    @apply prose-h4:text-xl;
    @apply prose-h4:mt-6;
@@ -70,7 +71,6 @@
 
    @apply prose-pre:border prose-pre:border-[var(--border)];
 
-   @apply prose-code:bg-[var(--border)];
    @apply prose-code:px-1;
  }
 
@@ -204,6 +204,97 @@
 
  .editorial-prose a {
    overflow-wrap: anywhere;
+ }
+
+ .editorial-prose details {
+   border: 1px solid var(--border);
+   margin: 1.75rem 0;
+   overflow: clip;
+   background: color-mix(in srgb, var(--text) 4%, transparent);
+ }
+
+ .editorial-prose summary {
+   display: flex;
+   align-items: center;
+   gap: 0.75rem;
+   padding: 0.85rem 1rem;
+   color: var(--text);
+   font-family: var(--font-jetbrains);
+   font-size: 0.9rem;
+   line-height: 1.5;
+   list-style: none;
+   cursor: pointer;
+   user-select: none;
+   transition:
+     background-color 160ms ease,
+     color 160ms ease;
+ }
+
+ .editorial-prose summary::-webkit-details-marker {
+   display: none;
+ }
+
+ .editorial-prose summary::before {
+   content: ">";
+   flex: 0 0 auto;
+   color: var(--muted);
+   font-family: var(--font-jetbrains);
+   transition:
+     color 160ms ease,
+     transform 180ms ease;
+ }
+
+ .editorial-prose details[open] > summary::before {
+   transform: rotate(90deg);
+ }
+
+ .editorial-prose summary:hover,
+ .editorial-prose summary:focus-visible {
+   background: color-mix(in srgb, var(--text) 8%, transparent);
+ }
+
+ .editorial-prose summary:hover::before,
+ .editorial-prose summary:focus-visible::before {
+   color: var(--text);
+ }
+
+ .editorial-prose summary:focus-visible {
+   outline: 2px solid var(--text);
+   outline-offset: -2px;
+ }
+
+ .editorial-prose details[open] > summary {
+   border-bottom: 1px solid var(--border);
+ }
+
+ .editorial-prose details > :not(summary) {
+   margin-left: 1rem;
+   margin-right: 1rem;
+ }
+
+ .editorial-prose details[open] > :not(summary) {
+   animation: details-open 180ms ease-out;
+ }
+
+ @keyframes details-open {
+   from {
+     opacity: 0;
+     transform: translateY(-0.35rem);
+   }
+
+   to {
+     opacity: 1;
+     transform: translateY(0);
+   }
+ }
+
+ @media (prefers-reduced-motion: reduce) {
+   .editorial-prose summary,
+   .editorial-prose summary::before,
+   .editorial-prose details[open] > :not(summary) {
+     animation: none;
+     transition: none;
+   }
  }
 
  @media (max-width: 700px) {
