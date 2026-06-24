@@ -2,6 +2,7 @@
 import githubIcon from '../assets/github.svg?raw';
 import linkedinIcon from '../assets/linkedin.svg?raw';
 import cvIcon from '../assets/cv.svg?raw';
+import rssIcon from '../assets/rss.svg?raw';
 
 const formatCategory = (
   category: string
@@ -59,7 +60,8 @@ const { groupedPosts = {} } =
     <div
       class="border-t border-[var(--border)] pt-6 flex justify-around"
     >
-      <a href="#" aria-label="Github" class="text-xl text-[var(--muted)] hover:text-[var(--text)] transition-colors" title="Github" set:html={githubIcon} />
-      <a href="#" aria-label="LinkedIn" class="text-xl text-[var(--muted)] hover:text-[var(--text)] transition-colors" title="LinkedIn" set:html={linkedinIcon} />
+      <a href="https://www.github.com/al-jibran" target="_blank" rel="noopener noreferrer" aria-label="Github" class="text-xl text-[var(--muted)] hover:text-[var(--text)] transition-colors" title="Github" set:html={githubIcon} />
+      <a href="https://www.linkedin.com/in/al-jibran" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-xl text-[var(--muted)] hover:text-[var(--text)] transition-colors" title="LinkedIn" set:html={linkedinIcon} />
+      <a href="/rss.xml" target="_blank" rel="noopener noreferrer" aria-label="RSS feed" class="text-xl text-[var(--muted)] hover:text-[var(--text)] transition-colors" title="RSS" set:html={rssIcon} />
     </div>
 </aside>
