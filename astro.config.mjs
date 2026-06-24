@@ -3,26 +3,27 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig, fontProviders } from "astro/config";
+import { unified } from "@astrojs/markdown-remark";
 import rehypeExternalLinks from "rehype-external-links";
-
-import react from "@astrojs/react";
 
 import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://example.com",
-  integrations: [mdx(), sitemap(), react()],
+  integrations: [mdx(), sitemap()],
   markdown: {
-    rehypePlugins: [
-      [
-        rehypeExternalLinks,
-        {
-          target: "_blank",
-          rel: ["noopener", "noreferrer"],
-        },
+    processor: unified({
+      rehypePlugins: [
+        [
+          rehypeExternalLinks,
+          {
+            target: "_blank",
+            rel: ["noopener", "noreferrer"],
+          },
+        ],
       ],
-    ],
+    }),
   },
 
   fonts: [
