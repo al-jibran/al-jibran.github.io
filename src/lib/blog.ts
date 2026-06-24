@@ -1,6 +1,13 @@
 import {
   getCollection,
+  type CollectionEntry
 } from "astro:content";
+
+type BlogPost =
+  CollectionEntry<"blog">;
+
+export type GroupedPosts =
+  Record<string, BlogPost[]>;
 
 export async function getGroupedPosts() {
   const posts =
@@ -10,7 +17,7 @@ export async function getGroupedPosts() {
         !data.draft
     );
 
-  return posts.reduce(
+  return posts.reduce<GroupedPosts>(
     (acc, post) => {
       const category =
         post.id.split("/")[0];

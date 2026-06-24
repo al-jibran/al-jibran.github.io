@@ -1,11 +1,16 @@
 ---
 import githubIcon from '../assets/github.svg?raw';
 import linkedinIcon from '../assets/linkedin.svg?raw';
-import cvIcon from '../assets/cv.svg?raw';
 
-const { groupedPosts = {} } = Astro.props;
+import { type GroupedPosts } from '../lib/blog.ts';
 
-const formatCategory = (category) =>
+interface Props {
+  groupedPosts: GroupedPosts
+}
+
+const { groupedPosts } = Astro.props;
+
+const formatCategory = (category: string) =>
     category
         .split("-")
         .map((word) => word[0].toUpperCase() + word.slice(1))

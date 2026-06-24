@@ -3,6 +3,12 @@ import githubIcon from '../assets/github.svg?raw';
 import linkedinIcon from '../assets/linkedin.svg?raw';
 import rssIcon from '../assets/rss.svg?raw';
 
+import { type GroupedPosts } from '../lib/blog.ts';
+
+interface Props {
+  groupedPosts: GroupedPosts
+}
+
 const formatCategory = (
   category: string
 ) =>
