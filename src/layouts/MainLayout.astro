@@ -1,12 +1,7 @@
 ---
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
-
-interface Props {
-  title?: string;
-}
-
-const { title = "Jibran Dev" } = Astro.props;
+import { SITE_TITLE } from '../consts.ts';
 ---
 
 <!doctype html>
@@ -23,7 +18,10 @@ const { title = "Jibran Dev" } = Astro.props;
       document.documentElement.setAttribute("data-theme", theme);
     </script>
 
-    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
+
+    <title>{SITE_TITLE}</title>
   </head>
 
   <body class="min-h-screen">
