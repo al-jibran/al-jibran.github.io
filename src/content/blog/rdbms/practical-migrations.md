@@ -26,13 +26,6 @@ So, what can you do? That is the problem migrations are meant to solve.
 
 The idea behind a migration is simple: changing the database structure. Doing it **safely** is where it gets hard. Making the change without losing data, breaking the application, or surprising the people who depend on it.
 
-<details>
-<summary>What is a rollback?</summary>
-
-To "roll back" is to "undo" the changes.
-
-</details>
-
 ## The Migration Checklist
 
 Here are a few things to consider before running a migration:
@@ -114,13 +107,13 @@ Usually is doing some work there.
 
 ### Will this break the existing application?
 
-Non-destructive does not mean risk-free. Adding an index can still lock a large table. Adding a column with a default can still be expensive depending on the database.
+Non-destructive does not mean risk-free. Adding an index can still lock a large table. Adding a column with a default can still be expensive depending on the database. Adding a nullable column is fine. Renaming a column is not. Adding a `NOT NULL` column without a default may break old code that inserts rows without that value.
 
 <u>A migration can be non-destructive and still break the application.</u>
 
 Whether this is a problem depends on your deployment strategy. If you can take downtime, you may be able to stop the application, run the migration, deploy the new code, and start everything again. If you want the application to stay online, the old and new code may both need to work with the database for a while.
 
-Adding a nullable column is fine. Renaming a column is not. Adding a `NOT NULL` column without a default may break old code that inserts rows without that value. Adding a constraint may break old code that still writes data the constraint rejects. You get the idea.
+For zero-downtime migrations, the [blue/green deployment](####blue-/-green-deployment) or [expand and contract pattern](####expand-and-contract-pattern) deployment strategies may be used.
 
 During deployment, do not assume every copy of your application updates at the exact same time. One server, worker, or cron job may still be running the old code while the new schema is already in place.
 
@@ -184,7 +177,7 @@ The database copies and maintains duplicates of its data across multiple servers
 
 ### What is the recovery plan?
 
-What can go wrong will go wrong. You can't avoid every failure but you can be prepared.
+What can go wrong, well, can go wrong. You can't avoid failure every time but you can be prepared.
 
 #### Schema migrations
 
@@ -219,7 +212,6 @@ Risks:
 
 - no migration history unless you keep track of it
 - harder to repeat consistently across environments
-- different teams might work with different versions
 - difficult in multi-tenant setups
 
 2. <u>**Migration tools**</u>: You might use a migration tool like Knex, Flyway, Liquibase, Laravel migrations. You write the migration file, and they handle tracking and execution.
@@ -274,7 +266,7 @@ The strategy depends on those answers. You can also combine one or more strategi
 
 The simplest strategy is to just make the database unavailable for the duration of the migration.
 
-It is a valid strategy and for some use cases it might be good enough like internal tooling, cases where the migration is risky to run while users are active or where the lack of complexity in deployment might be worth the downsides of the downtime.
+It is a valid strategy and for some use cases it might be good enough like internal tooling, or cases where the migration is risky to run while users are active.
 
 Of course, if the goal is to not affect your users and maintain availability during migration, this might be the "less than ideal" strategy. Also, downtime does not magically make a bad migration safe. You still need backups, a recovery plan, and a realistic estimate of how long the migration will take.
 
@@ -288,7 +280,7 @@ The advantage here is that if there are issues with the changes, we can switch b
 
 Well... ideally that is what should happen. There are a few problems that can happen:
 
-1. If there are destructive schema changes, even reverting to the previous instance might cause issues. We can avoid this by ensuring the schema changes are [non-destructive](#is-this-destructive-or-non-destructive)
+1. If there are destructive schema changes, even reverting to the previous instance might cause issues. We can avoid this by ensuring the schema changes are [non-destructive](#is-this-destructive-or-non-destructive).
 
 2. The newly switched (green) instance might have received data that the old one did not. If we have to switch to the old one, the inconsistency between the two will become a consideration. To avoid this, the database should be replicating.
 
