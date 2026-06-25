@@ -1,6 +1,5 @@
 ---
-import githubIcon from '../assets/github.svg?raw';
-import linkedinIcon from '../assets/linkedin.svg?raw';
+import SocialLinks from './SocialLinks.astro';
 
 import { SITE_HEADER_TITLE } from '../consts.ts';
 import { type GroupedPosts } from '../lib/blog.ts';
@@ -110,12 +109,7 @@ const formatCategory = (category: string) =>
         </nav>
 
         <div class="mt-auto pt-10">
-            <div
-                class="border-t border-[var(--border)] pt-6 flex justify-around"
-            >
-                <a href="#" aria-label="Github" class="text-xl text-[var(--muted)] hover:text-[var(--text)] transition-colors" set:html={githubIcon} />
-                <a href="#" aria-label="LinkedIn" class="text-xl text-[var(--muted)] hover:text-[var(--text)] transition-colors" set:html={linkedinIcon} />
-            </div>
+            <SocialLinks class="border-t border-[var(--border)] pt-6" />
         </div>
     </aside>
 

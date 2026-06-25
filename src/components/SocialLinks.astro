@@ -1,0 +1,59 @@
+---
+import githubIcon from '../assets/github.svg?raw';
+import linkedinIcon from '../assets/linkedin.svg?raw';
+import rssIcon from '../assets/rss.svg?raw';
+
+interface SocialLink {
+  href: string;
+  label: string;
+  title: string;
+  icon: string;
+  external?: boolean;
+}
+
+interface Props {
+  class?: string;
+}
+
+const links: SocialLink[] = [
+  {
+    href: "https://www.github.com/al-jibran",
+    label: "Github",
+    title: "Github",
+    icon: githubIcon,
+    external: true,
+  },
+  {
+    href: "https://www.linkedin.com/in/al-jibran",
+    label: "LinkedIn",
+    title: "LinkedIn",
+    icon: linkedinIcon,
+    external: true,
+  },
+  {
+    href: "/rss.xml",
+    label: "RSS feed",
+    title: "RSS",
+    icon: rssIcon,
+    external: true,
+  },
+];
+
+const { class: className = "" } = Astro.props;
+---
+
+<div class:list={["flex justify-around", className]}>
+  {
+    links.map((link) => (
+      <a
+        href={link.href}
+        target={link.external ? "_blank" : undefined}
+        rel={link.external ? "noopener noreferrer" : undefined}
+        aria-label={link.label}
+        class="text-xl text-[var(--muted)] hover:text-[var(--text)] transition-colors"
+        title={link.title}
+        set:html={link.icon}
+      />
+    ))
+  }
+</div>
