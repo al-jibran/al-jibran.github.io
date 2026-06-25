@@ -3,52 +3,64 @@
 ---
 
 <footer class="border-t border-[var(--border)]">
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
-        <section class="border-b border-[var(--border)] p-5 md:border-r xl:border-b-0">
-            <h2 class="mb-3 text-[10px] uppercase tracking-[0.25em] text-[var(--muted)]">
-                Source
-            </h2>
-            <p class="text-sm leading-7 text-[var(--muted)]">
-                The source for this blog is public. If you spot a problem,
-                please open a&nbsp;
-                <a
-                    href="https://github.com/al-jibran/jibran/issues"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-[var(--text)] underline decoration-[var(--border)] underline-offset-4 hover:italic"
-                    >GitHub issue</a
-                >.
-            </p>
-        </section>
+    <details class="group">
+        <summary class="flex cursor-pointer list-none items-center justify-between p-4 text-xs uppercase tracking-[0.25em] text-[var(--muted)] marker:hidden md:px-5">
+            <span>License and source</span>
+            <span class="grid size-8 place-items-center border border-[var(--border)] font-serif text-sm tracking-normal text-[var(--text)] group-open:hidden">
+                CC
+            </span>
+            <span class="hidden size-8 place-items-center border border-[var(--border)] font-serif text-sm tracking-normal text-[var(--text)] group-open:grid">
+                ×
+            </span>
+        </summary>
 
-        <section class="border-b border-[var(--border)] p-5 xl:border-b-0 xl:border-r">
-            <h2 class="mb-3 text-[10px] uppercase tracking-[0.25em] text-[var(--muted)]">
-                Writing
-            </h2>
-            <p class="text-sm leading-7 text-[var(--muted)]">
-                Unless noted otherwise, original work on this blog is available
-                under CC BY 4.0 with attribution.
-            </p>
-        </section>
+        <div class="grid border-t border-[var(--border)] md:grid-cols-2 xl:grid-cols-4">
+            <section class="border-b border-[var(--border)] p-4 md:border-r md:p-5 xl:border-b-0">
+                <h2 class="mb-2 text-[10px] uppercase tracking-[0.25em] text-[var(--muted)] md:mb-3">
+                    Source
+                </h2>
+                <p class="text-xs leading-6 text-[var(--muted)] md:text-sm md:leading-7">
+                    The source for this blog is public. If you spot a problem with either the content or code,
+                    please open a&nbsp;
+                    <a
+                        href="https://github.com/al-jibran/jibran/issues"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-[var(--text)] underline decoration-[var(--border)] underline-offset-4 hover:italic"
+                        >GitHub issue</a
+                    >.
+                </p>
+            </section>
 
-        <section class="border-b border-[var(--border)] p-5 md:border-r md:border-b-0">
-            <h2 class="mb-3 text-[10px] uppercase tracking-[0.25em] text-[var(--muted)]">
-                Code
-            </h2>
-            <p class="text-sm leading-7 text-[var(--muted)]">
-                Original source code and code snippets may be reused with
-                attribution under CC BY 4.0, unless noted otherwise.
-            </p>
-        </section>
+            <section class="border-b border-[var(--border)] p-4 md:p-5 xl:border-b-0 xl:border-r">
+                <h2 class="mb-2 text-[10px] uppercase tracking-[0.25em] text-[var(--muted)] md:mb-3">
+                    Writing
+                </h2>
+                <p class="text-xs leading-6 text-[var(--muted)] md:text-sm md:leading-7">
+                    Unless noted otherwise, original work on this blog is available
+                    under CC BY 4.0 with attribution.
+                </p>
+            </section>
 
-        <section class="p-5">
-            <h2 class="mb-3 text-[10px] uppercase tracking-[0.25em] text-[var(--muted)]">
-                References
-            </h2>
-            <p class="text-sm leading-7 text-[var(--muted)]">
-                Third-party assets, references, and quoted work remain under
-                their original terms.
-            </p>
-        </section>
-    </div>
+            <section class="border-b border-[var(--border)] p-4 md:border-r md:border-b-0 md:p-5">
+                <h2 class="mb-2 text-[10px] uppercase tracking-[0.25em] text-[var(--muted)] md:mb-3">
+                    Code
+                </h2>
+                <p class="text-xs leading-6 text-[var(--muted)] md:text-sm md:leading-7">
+                    Original code snippets in posts are available under the MIT
+                    License, unless noted otherwise.
+                </p>
+            </section>
+
+            <section class="p-4 md:p-5">
+                <h2 class="mb-2 text-[10px] uppercase tracking-[0.25em] text-[var(--muted)] md:mb-3">
+                    References
+                </h2>
+                <p class="text-xs leading-6 text-[var(--muted)] md:text-sm md:leading-7">
+                    Third-party assets, references, and quoted work remain under
+                    their original terms.
+                </p>
+            </section>
+        </div>
+    </details>
 </footer>
