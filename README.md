@@ -33,4 +33,4 @@ npm run preview
 
 Unless noted otherwise, original work in this repository is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
-Third-party assets, dependencies, trademarks, quoted material, referenced work, and linked resources remain under their respective licenses. See [`LICENSE.md`](./LICENSE.md) for details.
+Third-party assets, dependencies, trademarks, quoted material, referenced work, and linked resources remain under their respective licenses. See [`LICENSE`](./LICENSE) for details.
