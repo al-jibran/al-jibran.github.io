@@ -24,7 +24,7 @@ const { groupedPosts = {} } =
 ---
 
 <aside
-  class="hidden xl:flex flex-col sticky top-[75px] h-[calc(100vh-75px)] w-[280px] shrink-0 overflow-y-auto border-r border-[var(--border)] px-8 py-8"
+  class="scrollbar-none hidden xl:flex flex-col sticky top-[75px] h-[calc(100vh-75px)] w-[280px] shrink-0 overflow-y-auto overscroll-contain border-r border-[var(--border)] px-8 py-8"
 >
     <nav class="space-y-10 grow">
       {
@@ -60,5 +60,5 @@ const { groupedPosts = {} } =
       }
     </nav>
 
-    <SocialLinks class="border-t border-[var(--border)] pt-6" />
+    <SocialLinks class="border-t border-[var(--border)] pt-4" />
 </aside>

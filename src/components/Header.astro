@@ -68,7 +68,7 @@ const formatCategory = (category: string) =>
 <!-- Mobile drawer -->
 <aside
     id="mobile-menu"
-    class="fixed top-0 left-0 z-50 flex flex-col h-screen w-[300px] -translate-x-full overflow-y-auto border-r border-[var(--border)] bg-[var(--bg)] p-8 transition-transform duration-300"
+    class="scrollbar-none fixed top-0 left-0 z-50 flex h-dvh w-[300px] -translate-x-full flex-col overflow-y-auto overscroll-contain border-r border-[var(--border)] bg-[var(--bg)] p-8 transition-transform duration-300"
 >
         <div class="flex items-center justify-end">
             <button id="menu-close" class="cursor-pointer"> ✕ </button>
@@ -108,8 +108,8 @@ const formatCategory = (category: string) =>
             }
         </nav>
 
-        <div class="mt-auto pt-10">
-            <SocialLinks class="border-t border-[var(--border)] pt-6" />
+        <div class="mt-auto shrink-0 pt-8 pb-[env(safe-area-inset-bottom)]">
+            <SocialLinks class="border-t border-[var(--border)] pt-4" />
         </div>
     </aside>
 
@@ -122,12 +122,16 @@ const formatCategory = (category: string) =>
         menu?.classList.remove("-translate-x-full");
 
         overlay?.classList.remove("hidden");
+
+        document.body.style.overflow = "hidden";
     }
 
     function closeMenu() {
         menu?.classList.add("-translate-x-full");
 
         overlay?.classList.add("hidden");
+
+        document.body.style.overflow = "";
     }
 
     document.getElementById("menu-open")?.addEventListener("click", openMenu);

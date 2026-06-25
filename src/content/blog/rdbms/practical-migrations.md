@@ -113,7 +113,7 @@ Non-destructive does not mean risk-free. Adding an index can still lock a large 
 
 Whether this is a problem depends on your deployment strategy. If you can take downtime, you may be able to stop the application, run the migration, deploy the new code, and start everything again. If you want the application to stay online, the old and new code may both need to work with the database for a while.
 
-For zero-downtime migrations, the [blue/green deployment](####blue-/-green-deployment) or [expand and contract pattern](####expand-and-contract-pattern) deployment strategies may be used.
+For zero-downtime migrations, the [blue/green deployment](#bluegreen-deployments) or [expand and contract pattern](#expand-and-contract-pattern) deployment strategies may be used.
 
 During deployment, do not assume every copy of your application updates at the exact same time. One server, worker, or cron job may still be running the old code while the new schema is already in place.
 

@@ -42,7 +42,7 @@ const links: SocialLink[] = [
 const { class: className = "" } = Astro.props;
 ---
 
-<div class:list={["flex justify-around", className]}>
+<div class:list={["flex shrink-0 justify-around", className]}>
   {
     links.map((link) => (
       <a
@@ -50,7 +50,7 @@ const { class: className = "" } = Astro.props;
         target={link.external ? "_blank" : undefined}
         rel={link.external ? "noopener noreferrer" : undefined}
         aria-label={link.label}
-        class="text-xl text-[var(--muted)] hover:text-[var(--text)] transition-colors"
+        class="inline-flex h-8 w-8 items-center justify-center text-[var(--muted)] transition-colors hover:text-[var(--text)] [&>svg]:block [&>svg]:h-5 [&>svg]:w-5"
         title={link.title}
         set:html={link.icon}
       />
