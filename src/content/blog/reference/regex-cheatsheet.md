@@ -1,11 +1,12 @@
 ---
 title: "Regex Cheatsheet"
 pubDate: "22 June, 2026"
+description: "My regex cheatsheet"
 featured: false
 readingTime: "4 min read"
 ---
 
-This article contains my (very) rough notes for regex from the book [Mastering Regular Expressions](https://www.oreilly.com/library/view/mastering-regular-expressions/0596528124) for my own reference.
+This article contains my rough notes for regex from the book [Mastering Regular Expressions](https://www.oreilly.com/library/view/mastering-regular-expressions/0596528124) for my own reference.
 
 Practice: [regex101.com](https://www.regex101.com)
 

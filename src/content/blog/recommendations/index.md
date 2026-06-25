@@ -1,6 +1,7 @@
 ---
 title: "Index"
 kicker: '"If I have seen further, it is by standing on the shoulders of giants."'
+description: "A list of resources I have found useful"
 pubDate: "12 June, 2026"
 featured: false
 readingTime: "3 min read"

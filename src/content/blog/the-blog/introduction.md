@@ -1,6 +1,7 @@
 ---
 title: "Pilot"
 kicker: "\"God bless you, Ted. You're reading my blog.\""
+description: "The first post of the blog and an introduction"
 pubDate: "5 June, 2026"
 featured: false 
 readingTime: "3 min read"
