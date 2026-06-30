@@ -24,7 +24,7 @@ const { groupedPosts = {} } =
 ---
 
 <aside
-  class="scrollbar-none hidden xl:flex flex-col sticky top-[75px] h-[calc(100vh-75px)] w-[280px] shrink-0 overflow-y-auto overscroll-contain border-r border-[var(--border)] px-8 py-8"
+  class="scrollbar-none hidden xl:flex flex-col sticky top-18.75 h-[calc(100vh-75px)] w-70 shrink-0 overflow-y-auto overscroll-contain border-r border-(--border) px-8 py-8"
 >
     <nav class="space-y-10 grow">
       {
@@ -32,13 +32,13 @@ const { groupedPosts = {} } =
           ([category, posts]) => (
             <details open class="group">
                 <summary
-                  class="flex cursor-pointer items-center justify-between mb-4 border-b border-[var(--border)] pb-2 text-[11px] uppercase tracking-[0.25em] text-[var(--muted)]"
+                  class="flex cursor-pointer items-center justify-between mb-4 border-b border-(--border) pb-2 text-[11px] uppercase tracking-[0.25em] text-(--muted)"
                 >
                   {formatCategory(category)}
-                  <span class="text-xs text-[var(--muted)] group-open:hidden">
+                  <span class="text-xs text-(--muted) group-open:hidden">
                     [+]
                   </span>
-                  <span class="text-xs text-[var(--muted)] group-open:inline-block hidden">
+                  <span class="text-xs text-(--muted) group-open:inline-block hidden">
                     [-]
                   </span>
                 </summary>
@@ -47,7 +47,7 @@ const { groupedPosts = {} } =
                     <li>
                       <a
                         href={`/blog/${post.id.replace(/\.mdx?$/, "")}`}
-                        class="block w-full transition-colors border-b border-transparent pb-1 hover:border-[var(--border)]"
+                        class="block w-full transition-colors border-b border-transparent pb-1 hover:border-(--border)"
                       >
                         {post.data.title}
                       </a>
@@ -60,5 +60,5 @@ const { groupedPosts = {} } =
       }
     </nav>
 
-    <SocialLinks class="border-t border-[var(--border)] pt-4" />
+    <SocialLinks class="border-t border-(--border) pt-4" />
 </aside>
