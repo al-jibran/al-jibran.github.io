@@ -13,6 +13,15 @@ export default defineConfig({
   site: "https://al-jibran.github.io",
   integrations: [mdx(), sitemap()],
   markdown: {
+    shikiConfig: {
+      themes: {
+        light: "github-light-high-contrast",
+        sepia: "gruvbox-light-soft",
+        dark: "github-dark-high-contrast",
+        amoled: "github-dark-high-contrast",
+      },
+      defaultColor: "dark",
+    },
     processor: unified({
       rehypePlugins: [
         [
