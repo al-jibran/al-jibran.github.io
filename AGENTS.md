@@ -2,10 +2,9 @@
 
 ## Tech Stack
 
-- Astro v6
+- Astro v7
 - TailwindCSS v4
-- React v19 installed
-- Prefer `.astro` components over React
+- `.astro` components
 
 ## Design Philosophy
 
