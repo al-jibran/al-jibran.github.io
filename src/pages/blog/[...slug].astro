@@ -42,7 +42,7 @@ const { post } = Astro.props;
 
 const { Content, headings } = await render(post);
 
-const WORDS_PER_MINUTE = 200;
+const WORDS_PER_MINUTE = 220;
 
 const getReadingTime = (content: string) => {
   const wordCount = countWords(content);
