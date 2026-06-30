@@ -1,20 +1,23 @@
 ---
-title: "Pilot"
+title: "Pilot: Introduction"
 kicker: "\"God bless you, Ted. You're reading my blog.\""
 description: "The first post of the blog and an introduction"
 pubDate: "5 June, 2026"
 featured: false 
-readingTime: "3 min read"
 ---
 
 I've always found introductions awkward. Writing them is somehow even more difficult, but this feels like as good a place as any to start.
 
 ## Introduction
-I am Al Jibran, a software developer who has been working on production systems professionally since 2021. My work has largely revolved around full-stack web development: Frontend, APIs, GenAI, databases, deployments, and other engineering decisions.
+I am Al Jibran, a software developer who has been working on production systems professionally since 2021. My work has largely revolved around full-stack web development: frontend, APIs, GenAI, databases, deployments, and the engineering decisions around them. 
+
+At work, I have designed, implemented, and deployed 2 full-stack systems from scratch. I have also maintained and extended an existing high-traffic production system. That mix involved a lot of design discussions including software, systems, and databases.
 
 Outside of work, I try to explore different corners of programming. I've spent time building Android applications with Java and Kotlin, experimenting with C/C++ for emulator projects, and even Assembly because I am fascinated by abstractions and how they work. I wouldn't call myself an expert in any of those domains, but exploring them has been incredibly fun and has made me a better engineer.
 
-I wrote my first line of HTML/CSS in 2010 when I was 12 and it was love at first site. The fact that I could write something and make boxes move left, right, or center (well, centering was difficult), click on links, upload images and arrange them on the page was amazing and to me and has remained the best part of programming - writing code. 
+To say I have written a lot of code would be an understatement. 
+
+I wrote my first line of HTML/CSS in 2010 when I was 12 and it was love at first site. The fact that I could write something and make boxes move left, right, or center (well, centering was difficult), click on links, upload images and arrange them on the page was amazing. To me, that has remained the best part of programming: writing code. 
 
 Actually, the very first lines of code I ever wrote were way back in 2006 in a program called [Logo](https://en.wikipedia.org/wiki/Logo_(programming_language)). It had a turtle that you could give a command like RIGHT or LEFT followed by a number to make it move. At the time, I didn't even know what a programming language was and I am gonna be honest, 8 year old me thought it was a game. I never figured out how to play it so I didn't touch it after that.
 
@@ -28,19 +31,23 @@ Looking back, they represent two sides of my experience with software. The first
 
 It's a daily occurrence now that I go online and see someone lamenting the state of programming: How AI has taken away the joy out of it. How most of their day is prompting some AI agent, reading code and having no idea how it works and they just don't enjoy programming any more. 
 
-If I am being honest, I have felt that burnout too. If AI can write code faster and better (ehhh...), what's the point? After all, wasn't writing code supposed to be the fun part?
+I have felt that burnout too. If AI can write code faster and better (ehhh...), what's the point? After all, wasn't writing code supposed to be the fun part?
 
 I realized the solution is simple, at least if writing code is the best part of programming for you:
 
 **Write code.**
 
-Now, I am not saying you need to take on a huge undertaking that takes months to finish and by day seven you're already over it. No, just small programs that teach you something. A rate limiter, a tic-tac-toe AI, an autocomplete engine, and other short but complex programs that can be built in an evening and should open the door to bigger ideas about algorithms, systems, design, and engineering.
+Now, I am not saying you need to take on a huge undertaking that takes months to finish and by day seven you're already over it. No, just small programs that teach you something. Programs that can be built in an evening and should open the door to bigger ideas about algorithms, systems, design, and engineering.
 
 ### **The Missing Pieces**
 
-Very little of my time was spent writing software in university. In fact, and this is not a joke, we would often have to write code **by hand** on a piece of paper for assignments and exams. As it turns out, software is easier to learn when you write it on a computer. So, I had to learn pretty much all of it on my own.
+I spent very little time writing software in university. In fact, and this is not a joke, we would often have to write code **by hand** on a piece of paper for assignments and exams.
 
-To that end, I went off the deep end with online courses, tutorials, books, MOOCs, documentations, and LeetCode problems. I would feel good after finishing those tutorials but when it came time to actually build something, I had no idea of what to build. Even when I would sit down to build something, I didn't feel confident enough to be able to do it on my own. I would run into that same feeling again and again: The same frustration I felt at eight years old when I couldn't figure out what to do with that turtle on my screen and simply gave up.
+As it turns out, software is easier to learn when you write it on a computer. So, I had to learn pretty much all of it on my own.
+
+To that end, I went off the deep end with online courses, tutorials, books, MOOCs, documentations, and LeetCode problems. I would feel good after finishing those tutorials but when it came time to actually build something, I had no idea what to build. 
+
+Even when I would sit down to build something, I didn't feel confident enough to be able to do it on my own. I would run into that same feeling again and again: The same frustration I felt at eight years old when I couldn't figure out what to do with that turtle on my screen and gave up.
 
 There was a real lack of resources of anything beyond the basic CRUD app. Yeah, I can make a REST API but what about other things?
 
@@ -50,7 +57,7 @@ There was a real lack of resources of anything beyond the basic CRUD app. Yeah, 
 
 - __I don't know what I don't know__: Software engineering is all about trade-offs. There are different solutions for the same problem, some more efficient than others depending on the situation. There was no way for me to use the efficient, the best way of solving a problem because I didn't know it existed.
 
-It felt like I was collecting puzzle pieces without ever seeing the bigger picture. I had to scour the internet and read different forums, blogs, documentations, and stack overflow threads for the same problem. Some would work, some would be severely outdated, some would work **and** be severely outdated. Nonetheless, I did learn it and was able to see the picture finally.
+It felt like I was collecting puzzle pieces without ever seeing the bigger picture. I had to scour the internet and read different forums, blogs, documentations, and stack overflow threads for the same problem. Some would work, some would be severely outdated, some would work **and** be severely outdated. Nonetheless, I did learn it and was able to see the picture.
 
 Primarily, this blog is for my own convenience. It's a place to document things I've learned, things I'm learning, and things I don't want to forget. It's about documenting and saving that picture so it doesn't fade away from memory. 
 

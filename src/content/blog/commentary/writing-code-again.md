@@ -5,7 +5,6 @@ description: "Thoughts on finding joy in software development writing code"
 pubDate: "10 June, 2026"
 featured: false
 draft: true
-readingTime: "4 min read"
 ---
 
 This blog primarily exists to help bridge the gap between learning individual concepts and understanding how they fit together. Most of the posts will be about the ideas, algorithms, systems, and implementations behind software. That said, there is another reason this blog exists.

@@ -1,5 +1,5 @@
 ---
-title: "Practical Migrations"
+title: "How to Safely Run Database Migrations"
 pubDate: "24 June, 2026"
 description: "A practical checklist for safer database migrations."
 featured: true 
