@@ -24,11 +24,34 @@ export async function getStaticPaths() {
   }));
 }
 
+const countWords = (content: string) => {
+  const plainText = content
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/`[^`]*`/g, " ")
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/[#>*_~\-|+=`{}()[\]\\]/g, " ");
+
+  return plainText.match(/[\p{L}\p{N}]+(?:['’\-][\p{L}\p{N}]+)*/gu)?.length ?? 0;
+};
+
 const groupedPosts = await getGroupedPosts();
 
 const { post } = Astro.props;
 
 const { Content, headings } = await render(post);
+
+const WORDS_PER_MINUTE = 200;
+
+const getReadingTime = (content: string) => {
+  const wordCount = countWords(content);
+  const minutes = wordCount === 0 ? 0 : Math.ceil(wordCount / WORDS_PER_MINUTE);
+
+  return `${minutes} min read`;
+};
+
+const readingTime = getReadingTime(post.body ?? "");
 
 const tocHeadings = headings.filter(
   heading =>
@@ -79,7 +102,7 @@ const getTocBranch = (index: number) => {
             </p>
 
             <div class="text-sm text-[var(--muted)]">
-              {post.data.readingTime}
+              {readingTime}
             </div>
           </div>
 
