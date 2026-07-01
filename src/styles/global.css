@@ -370,5 +370,9 @@
      font-size: 1.05rem;
      line-height: 1.9;
    }
+
+   .editorial-prose pre {
+       font-size: 0.85rem;
+   }
  }
 
