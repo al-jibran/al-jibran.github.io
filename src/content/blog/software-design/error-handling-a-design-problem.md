@@ -1,7 +1,7 @@
 ---
 title: "Error Handling Is a Design Problem"
 kicker: "To err is human, to prepare is design"
-description: "Strategies to handle errors and bad interfaces"
+description: "Error handling is not just try/catch. It is interface design, failure strategy, and deciding who should recover when something goes wrong"
 pubDate: "30 June, 2026"
 featured: true
 ---

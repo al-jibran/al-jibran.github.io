@@ -70,7 +70,7 @@ const getTocBranch = (index: number) => {
 
 ---
 
-<MainLayout title={post.data.title}>
+<MainLayout title={post.data.title} description={post.data.description} ogType="article">
   <Header groupedPosts={groupedPosts} />
 
   <div class="flex min-h-screen">

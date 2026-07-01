@@ -1,7 +1,10 @@
 ---
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
-import { SITE_TITLE } from '../consts.ts';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts.ts';
+
+
+const { title = SITE_TITLE, description = SITE_DESCRIPTION, ogType = 'website' } = Astro.props;
 ---
 
 <!doctype html>
@@ -13,6 +16,18 @@ import { SITE_TITLE } from '../consts.ts';
       content="width=device-width, initial-scale=1.0"
     />
 
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={Astro.url} />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
     <script is:inline>
       const theme = localStorage.getItem("theme") || "dark";
       document.documentElement.setAttribute("data-theme", theme);
@@ -23,7 +38,6 @@ import { SITE_TITLE } from '../consts.ts';
     <script data-goatcounter="https://al-jibran.goatcounter.com/count"
             async src="//gc.zgo.at/count.js"></script>
 
-    <title>{SITE_TITLE}</title>
   </head>
 
   <body class="min-h-screen">
